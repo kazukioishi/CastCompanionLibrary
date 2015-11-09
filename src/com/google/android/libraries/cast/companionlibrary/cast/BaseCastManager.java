@@ -1233,4 +1233,14 @@ public abstract class BaseCastManager
     public boolean isAnyRouteAvailable() {
         return mMediaRouterCallback.isRouteAvailable();
     }
+
+    /**
+     * Sets the {@link Context} for the subsequent calls. Setting context can help the library to
+     * show error messages to the user.
+     *
+     * @param context
+     */
+    public void setContext(Context context) {
+        mContext = context;
+    }
 }

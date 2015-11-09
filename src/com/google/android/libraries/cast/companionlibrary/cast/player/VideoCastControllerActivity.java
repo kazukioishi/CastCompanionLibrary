@@ -285,7 +285,7 @@ public class VideoCastControllerActivity extends AppCompatActivity implements
 
     private void setUpActionBar() {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
+        //setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 

@@ -18,6 +18,8 @@ package com.google.android.libraries.cast.companionlibrary.utils;
 
 import static com.google.android.libraries.cast.companionlibrary.utils.LogUtils.LOGE;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import com.google.android.gms.cast.MediaInfo;
 import com.google.android.gms.cast.MediaMetadata;
 import com.google.android.gms.cast.MediaQueueItem;
@@ -416,5 +418,36 @@ public final class Utils {
      */
     public static MediaQueueItem rebuildQueueItem(MediaQueueItem item) {
         return new MediaQueueItem.Builder(item).clearItemId().build();
+    }
+
+    /**
+     * Saves a float value under the provided key in the preference manager. If <code>value</code>
+     * is <code>Float.MIN_VALUE</code>, then the provided key will be removed from the preferences.
+     *
+     * @param context
+     * @param key
+     * @param value
+     */
+    public static void saveFloatToPreference(Context context, String key, float value) {
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+        if (Float.MIN_VALUE == value) {
+            // we want to remove
+            pref.edit().remove(key).apply();
+        } else {
+            pref.edit().putFloat(key, value).apply();
+        }
+    }
+
+    /**
+     * Retrieves a String value from preference manager. If no such key exists, it will return
+     * <code>null</code>.
+     *
+     * @param context
+     * @param key
+     * @return
+     */
+    public static String getStringFromPreference(Context context, String key) {
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+        return pref.getString(key, null);
     }
 }
