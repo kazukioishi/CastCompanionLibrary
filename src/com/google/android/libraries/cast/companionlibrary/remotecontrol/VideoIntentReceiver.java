@@ -42,11 +42,11 @@ public class VideoIntentReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        VideoCastManager castMgr = VideoCastManager.getInstance();
         String action = intent.getAction();
-        if (action == null) {
+        if (action == null || VideoCastManager.isInstanceNull()) {
             return;
         }
+        VideoCastManager castMgr = VideoCastManager.getInstance();
         switch (action) {
             case VideoCastNotificationService.ACTION_TOGGLE_PLAYBACK:
                 try {

@@ -268,6 +268,10 @@ public class VideoCastManager extends BaseCastManager
         return sInstance;
     }
 
+    public static boolean isInstanceNull(){
+        return sInstance == null;
+    }
+
     @Override
     protected void onFeaturesUpdated(int capabilities) {
         if (isFeatureEnabled(FEATURE_CAPTIONS_PREFERENCE)) {
